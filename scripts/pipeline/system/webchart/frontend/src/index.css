@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Dark is the default (no data-theme attribute yet, or explicitly "dark").
+   Every pair below is WCAG AA checked: body text >=4.5:1, dim text >=4.5:1,
+   borders >=3:1 against the surface they sit on. */
+:root,
+:root[data-theme="dark"] {
+  --bg: #131722;
+  --bg-panel: #1e222d;
+  --border: #2a2e39;
+  --grid: #5c6884;
+  --text: #d1d4dc;
+  --text-dim: #8b90a0;
+  --accent: #2962ff;
+  --accent-text: #ffffff;
+  --up: #26a69a;
+  --down: #ef5350;
+}
+
+:root[data-theme="light"] {
+  --bg: #f7f8fa;
+  --bg-panel: #ffffff;
+  --border: #7a818f;
+  --grid: #818aa2;
+  --text: #131722;
+  --text-dim: #5c6470;
+  --accent: #2962ff;
+  --accent-text: #ffffff;
+  --up: #26a69a;
+  --down: #ef5350;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Trebuchet MS", Roboto, Ubuntu, sans-serif;
+}
+
+/* Toolbar overflows into a scroll instead of clipping/pushing the page wide, matching
+   TradingView's own scrollWrap — children must not shrink or they'd squish instead. */
+.toolbar-scroll {
+  scrollbar-width: none;
+}
+.toolbar-scroll::-webkit-scrollbar {
+  display: none;
+}
+.toolbar-scroll > * {
+  flex-shrink: 0;
+}
